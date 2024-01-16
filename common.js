@@ -12,8 +12,8 @@ function getHost() {
 function getInjectDataFromStorage() {
 	var currentUrl = getHost();
 	return new Promise(function(resolve, reject) {
-		chrome.storage.sync.get(currentUrl, function(data) {
-		//chrome.storage.local.get(currentUrl, function(data) {
+		//chrome.storage.sync.get(currentUrl, function(data) {
+		chrome.storage.local.get(currentUrl, function(data) {
 			data = data[currentUrl];
 			if (data == undefined) {
 				resolve();
@@ -61,8 +61,8 @@ function saveInjectDataToStorage(
 		project4enabled: project4enabled
 		
 	};
-	chrome.storage.sync.set(data);
-	//chrome.storage.local.set(data);
+	//chrome.storage.sync.set(data);
+	chrome.storage.local.set(data);
 }
 
 function updateCss(css) {
