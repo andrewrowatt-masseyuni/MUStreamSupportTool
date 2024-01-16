@@ -12,32 +12,48 @@ chrome.runtime.onInstalled.addListener(function() {
         contexts: ["page"],
         id: "open_stream"
     });
-	
-	chrome.contextMenus.create({
-        title: "Open page in recovery-stream (requires alt login)",
-        contexts: ["page"],
-        id: "open_recovery-stream"
-    });
-	
-	chrome.contextMenus.create({
-        title: "Open page in stream-dev (Moodle 4.1)",
+
+    chrome.contextMenus.create({
+        title: "Open page in stream-dev",
         contexts: ["page"],
         id: "open_stream-dev"
+    });
+
+    chrome.contextMenus.create({
+        title: "Open page in recovery-stream with alt login",
+        contexts: ["page"],
+        id: "open_recovery-stream_with_login"
+    });
+	
+	
+	chrome.contextMenus.create({
+        title: "Open page in recovery-stream",
+        contexts: ["page"],
+        id: "open_recovery-stream"
     });
 	
 });
 
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
-    if (info.menuItemId.substring(0,5) === "open_") {
-        openPageOnOtherHost(info,false);
+    if(info.menuItemId === "open_recovery-stream_with_login") {
+        openPageOnOtherHost(info,true);
     }
+    else if (info.menuItemId.substring(0,5) === "open_") {
+        openPageOnOtherHost(info,false);
+    };
+
 })
 
-openPageOnOtherHost = function(onClickData,tab){
+openPageOnOtherHost = function(onClickData,recoveryAltLogin){
 	var url = onClickData.pageUrl;
-	var host = onClickData.menuItemId.substring(5);
+	var host = recoveryAltLogin ? "recovery-stream" : onClickData.menuItemId.substring(5);
 	url = url.replace(/\/\/(stream|stream-dev|prestream|recovery-stream)/,"*").replace("*",`//${host}`);
 	
-    chrome.tabs.create({url: url});
+    if(recoveryAltLogin) {
+        chrome.tabs.create({url: `https://recovery-stream.massey.ac.nz/login/index.php?noredirect=1&wantsurl=${url}`});
+    }
+    else {
+        chrome.tabs.create({url: url});
+    }
  };
 
