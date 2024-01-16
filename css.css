@@ -44,9 +44,21 @@ body.jsenabled {color:red;}
             }
         }
 
-
         .coursecat {
             font-size:smaller;
+        }
+
+        .quicklinks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 0.2em;
+
+            a:not(:last-of-type):after { content: " \2022"; }
+
+            &::before {
+                content:'Quick links: ';
+                font-weight: 400;
+            }
         }
     }
 } 

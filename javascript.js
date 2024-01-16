@@ -1,5 +1,3 @@
-//console.log("AJR:Executing injected JS via Chrome Extension");
-
 document.addEventListener('DOMContentLoaded', function() {  /* Helper links on the course search page */
 	console.log("AJR:Executing injected JS - javascript.js");
 	
@@ -16,15 +14,28 @@ document.addEventListener('DOMContentLoaded', function() {  /* Helper links on t
 		shortname = $(this).find(".coursename a").text();
 		sn = shortname.match(/\((.*?)\)/)[1];
 		c = $(this).find(".moreinfo");
-		c.append(`<a target='_blank' href='/course/edit.php?id=${cid}'>Edit</a>`);
-		c.append(" | <a target='_blank' href='/user/index.php?id=" + cid + "'>Enrol</a>");
-		c.append(" - <a target='_blank' href='/enrol/instances.php?id=" + cid + "'>Methods</a>");
-		c.append(" | <a target='_blank' href='/mod/assign/index.php?id=" + cid + "'>Assignments</a>");
-		c.append(" | <a target='_blank' href='/mod/quiz/index.php?id=" + cid + "'>Quizzes</a>");
-		c.append(" | <a target='_blank' href='/grade/edit/tree/index.php?id=" + cid + "'>Gradebook setup</a>");
+
+		var ql = '<div class="quicklinks">';
+		ql += `<a target='_blank' href="/course/edit.php?id=${cid}">Edit</a>`;
+		ql += `<a target="_blank" href="/user/index.php?id=${cid}">Enrol</a>`;
+		ql += `<a target="_blank" href="/enrol/instances.php?id=${cid}">Methods</a>`;
+		ql += `<a target="_blank" href="/mod/assign/index.php?id=${cid}">Assignments</a>`;
+		ql += `<a target="_blank" href="/mod/quiz/index.php?id=${cid}">Quizzes</a>`;
+		ql += `<a target="_blank" href="/grade/edit/tree/index.php?id=${cid}">Gradebook</a>`;
+
+		ql += `&nbsp;<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${sn}')" title="Copy shortname to clipboard">${sn}</button>`;
+		ql += `&nbsp;<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${cid}')" title="Copy Course ID clipboard">${cid}</button>`;
+		ql += `&nbsp;<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('https://stream.massey.ac.nz/course/view.php?id=${cid}')" title="Copy course URL clipboard">URL</button>`;
+		ql += `</div>`;
+
+		c.append(ql);
+
+		/*
+
 		c.append("&nbsp;<button class=\"copy-to-clipboard-ajr\" onclick=\"navigator.clipboard.writeText('" + sn + "')\" title=\"Copy shortname to clipboard\">" + sn + "</button>");
 		c.append("&nbsp;<button class=\"copy-to-clipboard-ajr\" onclick=\"navigator.clipboard.writeText('" + cid + "')\" title=\"Copy Course ID clipboard\">" + cid + "</button>");
 		c.append("&nbsp;<button class=\"copy-to-clipboard-ajr\" onclick=\"navigator.clipboard.writeText('https://stream.massey.ac.nz/course/view.php?id=" + cid + "')\" title=\"Copy course URL clipboard\">URL</button>");
+		*/
     });
 	
 	/* Helper links on the assignment list page e.g.: https://stream.massey.ac.nz/mod/assign/index.php?id=3153 */
@@ -129,28 +140,13 @@ document.addEventListener('DOMContentLoaded', function() {  /* Helper links on t
 	    }
 	})
 	
-		// Course Reset
+	// MathsFirst / Readiness Course Reset
 	$("#page-course-reset.course-8805").each(function () {
 	    if(window.location.href.indexOf("autoreset=yes") != -1) {
 			$("#id_reset_quiz_attempts").prop( "checked", true );
 			$("#id_submitbutton").click();
 	    }
 	})
-	
-	// multianswer fix-up
-	$("#page-question-type-multianswer").each(function () {
-	    if(window.location.href.indexOf("analyzequestion1=yes") != -1) {
-			$("form[action='question.php']").attr("action","question.php?analyzequestion2=yes");
-			$("#id_analyzequestion").click();
-	    }
-	})
-	
-	$("#page-question-type-multianswer").each(function () {
-	    if(window.location.href.indexOf("analyzequestion2=yes") != -1) {
-			//$("form[action='question.php']").attr("action","question.php?analyzequestion2=yes");
-			$("#id_submitbutton").click();
-	    }
-	});
 	
 	/* https://stream.massey.ac.nz/course/modedit.php?update=4786147 */
 	if(window.location.href.indexOf("ajr_action=lti_staff_rename") != -1) {
