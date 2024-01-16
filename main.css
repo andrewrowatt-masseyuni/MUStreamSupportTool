@@ -4,8 +4,6 @@
 }
 #cssEditor, #cssEditor1, #cssEditor2, #cssEditor3,#tools { 
 	position: absolute;
-	/* top: 38px;
-	left: 5px; */
     width: 500px;
     height: 550px;
 }
@@ -25,7 +23,6 @@ ul.tabs li {
 	width: 90px;
 	height: 30px;
 	line-height: 30px;
-	/*font-family: consolas;*/
 	color: #337ab7;
 	text-align: center;
 	cursor: pointer;
@@ -33,13 +30,8 @@ ul.tabs li {
     text-overflow: ellipsis;
     overflow: hidden;
 	padding: 0 5px;
-	
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;	
-	border: 1px solid #337ab7;
-	border-bottom: none;
-	
 }
+
 ul.tabs li.selected {
 	background: #2F3129;;
 	color: white;
