@@ -1,0 +1,47 @@
+#container {
+	width: 500px;
+	height: 580px;
+}
+#cssEditor, #cssEditor1, #cssEditor2, #cssEditor3,#tools { 
+	position: absolute;
+	/* top: 38px;
+	left: 5px; */
+    width: 500px;
+    height: 550px;
+}
+
+#cssEditor1, #cssEditor2, #cssEditor3, #tools {
+	display: none;
+}
+ul.tabs {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	position: relative;
+	border-bottom: 1px solid #337ab7;
+}
+ul.tabs li {
+	display: inline-block;
+	width: 90px;
+	height: 30px;
+	line-height: 30px;
+	/*font-family: consolas;*/
+	color: #337ab7;
+	text-align: center;
+	cursor: pointer;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+	padding: 0 5px;
+	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;	
+	border: 1px solid #337ab7;
+	border-bottom: none;
+	
+}
+ul.tabs li.selected {
+	background: #2F3129;;
+	color: white;
+	cursor: default;
+}

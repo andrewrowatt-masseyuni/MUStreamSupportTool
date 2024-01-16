@@ -1,0 +1,105 @@
+/*
+Note: Often need to increase specificity e.g. jsenabled
+
+body.jsenabled {color:red;}
+*/
+
+#page-report-log-index section#region-main { max-width: none; }
+
+/* Highligh current chapter */
+#page-mod-book-view .book_toc strong::after{
+    content: "Current";margin-left: 0.5em;background-color: #d4edda;font-weight: normal;border-radius: 12px;padding: 4px 8px;font-size: 15px;color: black;
+}
+
+/* Always show search */
+#toc-search {display: block; }
+
+/* Category and search */
+#page-course-index-category, #page-course-search {
+    .coursebox {
+        .moreinfo { font-size: smaller; margin-bottom: 0.5em;float:none;}
+        .content { 
+            .courseimage {
+                display: none;
+            }
+        }
+        .font-weight-bold { font-weight: 400!important;}
+        .teachers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 0.2em;
+            font-size:smaller;
+            float:none;
+            width:100%;
+            margin-bottom: 0.5em;
+
+            .font-weight-bold {display:none;}
+            li:not(:last-child):after { content: " \2022"; }
+            a {text-decoration: underline;}
+        }
+        .coursecat {
+            font-size:smaller;
+        }
+    }
+} 
+
+
+/* Ad-hoc reports */
+.csql_category.csql_categoryhidden .csql_category_reports {
+    display: block!important;
+}
+
+.csql_category_reports .admin_note {
+    color:#777;
+}
+
+.csql_category_reports p {
+    margin-bottom: 0;
+}
+
+.csql_category h2 {
+    font-size: 22px;
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+
+.csql_category h3 {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+
+.csql_category h2 span.reportcounts,
+.csql_category h2 a.view-category
+{
+    display:none;
+}
+
+/* Compact course creation table year column */
+#page-admin-tool-courseimport-course .c3 a {width: auto; }
+
+/* /admin/usrs */
+#fgroup_id_username_grp, #fgroup_id_email_grp { display: flex;}
+
+section.block_navigation.block { max-height: 15em; overflow: scroll; }
+
+
+/* Helper for nav bar*/
+#page-header .breadcrumb-nav .breadcrumb-item div {
+	display: inline;
+}
+
+#page-header .breadcrumb-nav .breadcrumb-item div span {
+	display: none;
+}
+
+#page-header .breadcrumb-nav .breadcrumb-item div:hover span {
+	display: inline;
+}
+
+#page-header .breadcrumb-nav .breadcrumb-item div span button {
+	background-color: #eee;
+}
+
+/* Helper book editing*/
+a.book-edit-helper {opacity:0.2;}
+li:hover > a.book-edit-helper {opacity:1.0;}

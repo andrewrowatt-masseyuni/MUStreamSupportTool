@@ -1,0 +1,27 @@
+{
+   "action": {
+      "default_icon": "icon.png",
+      "default_popup": "main.html",
+      "default_title": "Stream Support Tools"
+   },
+   "content_scripts": [ {
+      "js": [ "jquery-3.5.1.min.js", "common.js", "content.js","javascript.js" ],
+	  "css": ["css.css"],
+      "matches": [ "http://*/*", "https://*/*" ],
+      "run_at": "document_start"
+   } ],
+   "background": {
+    "service_worker": "background.js"
+  },
+   "content_security_policy": {
+	   "extension_pages":"script-src 'self'; object-src 'self'"
+   },
+   "description": "Dynamically injects helper links and buttons into various administrative Stream pages. Can also inject custom CSS. Use at your own risk.",
+    "manifest_version": 3,
+   "name": "Stream Support Tools",
+   "permissions": [ "tabs", "storage", "contextMenus","scripting" ],
+   "host_permissions": [
+    "https://*.massey.ac.nz/*"
+  ],
+   "version": "3.4.81"
+}

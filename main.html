@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	<title>Stream Tools</title>
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="ace/ace.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<script type="text/javascript" src="common.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+<div id="container">
+	<ul class="tabs nav nav-tabs small">
+		<li id="cssTab"         class="tab nav-item selected" tab-content-id="cssEditor">CSS (Project 1)</li>
+		<li id="cssTab1"        class="tab nav-item"          tab-content-id="cssEditor1">CSS (Project 2)</li>
+		<li id="cssTab2"        class="tab nav-item"          tab-content-id="cssEditor2">CSS (Project 3)</li>
+		<li id="cssTab3"        class="tab nav-item"          tab-content-id="cssEditor3">CSS (Project 4)</li>
+		<li id="toolsTab"       class="tab nav-item"          tab-content-id="tools">Tools</li>
+	</ul>
+	
+	<div id="cssEditor"         class="tabContent"></div>
+	<div id="cssEditor1"         class="tabContent"></div>
+	<div id="cssEditor2"         class="tabContent"></div>
+	<div id="cssEditor3"         class="tabContent"></div>
+	<div id="tools" class="tabContent container-lg">
+	
+	<fieldset id="tools_projects" class="border p-2 mt-2"><legend class="w-auto h5 mb-0">Projects</legend>
+			<div class="form-group form-row align-items-center">
+				<label for="project1name" class="col-3 col-form-label">Project 1</label>
+				<input id="project1name" type="text" value="LMS021x" class="form-control col"/>
+				<div class="col-3">
+					<div class="form-check form-check-inline">
+						<input id="project1enabled" type="checkbox" checked="checked" class="form-check-input ">
+						<label for="project1enabled" class="form-check-label col-form-label">Inject</label>
+					</div>
+				</div>
+			</div>
+			<!--<hr class="w-100" />-->
+			<div class="form-group form-row align-items-center">
+				<label for="project2name" class="col-3 col-form-label">Project 2</label>
+				<input id="project2name" type="text" value="LMS021x" class="form-control col"/>
+				<div class="col-3">
+					<div class="form-check form-check-inline">
+						<input id="project2enabled" type="checkbox" checked="checked" class="form-check-input ">
+						<label for="project2enabled" class="form-check-label col-form-label">Inject</label>
+					</div>
+				</div>
+			</div>
+			<!--<hr class="w-100" />-->
+			<div class="form-group form-row align-items-center">
+				<label for="project3name" class="col-3 col-form-label">Project 3</label>
+				<input id="project3name" type="text" value="LMS021x" class="form-control col"/>
+				<div class="col-3">
+					<div class="form-check form-check-inline">
+						<input id="project3enabled" type="checkbox" checked="checked" class="form-check-input ">
+						<label for="project3enabled" class="form-check-label col-form-label">Inject</label>
+					</div>
+				</div>
+			</div>
+			<!--<hr class="w-100" />-->
+			<div class="form-group form-row align-items-center">
+				<label for="project4name" class="col-3 col-form-label">Project 4</label>
+				<input id="project4name" type="text" value="LMS021x" class="form-control col"/>
+				<div class="col-3">
+					<div class="form-check form-check-inline">
+						<input id="project4enabled" type="checkbox" checked="checked" class="form-check-input ">
+						<label for="project4enabled" class="form-check-label col-form-label">Inject</label>
+					</div>
+				</div>
+			</div>
+	</fieldset>
+	<fieldset class="border p-2 mt-2"><legend class="w-auto h5 mb-0">Course details</legend>
+		<div class="form-row">
+			<div class="col-3">
+				<input id="course_id" type="text" value="" disabled="disabled"  class="form-control mr-2" />
+			</div>
+			<div class="col-3">
+				<input id="course_theme" type="text" value="" disabled="disabled"  class="form-control mr-2" />
+			</div>
+			<div class="col">
+				<input id="hostname" type="text" value="" disabled="disabled"  class="form-control"/>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset class="border p-2 mt-2"><legend class="w-auto h5 mb-0">Set course theme</legend>
+	<div class="form-row">
+		<div class="col-6">
+			<select id="theme" class="form-control">
+				<option value="">Do not force</option>
+				<option value="classic">Classic</option>
+				<option value="snap">Snap</option>
+				<option value="snapcoca">Snap CoCA</option>
+				<option value="snapcoh">Snap CoH</option>
+				<option value="snapcohss">Snap CoHSS</option>
+				<option value="snapcos">Snap CoS</option>
+				<option value="snapmbs">Snap MBS</option>
+				<option value="snapmbsv2">Snap MBS v2</option>
+				<option value="snapwiley">Snap Wiley</option>
+			</select>
+		</div>
+		<div class="col-6">
+			<button id="setTheme" class="btn btn-secondary">Set theme and refresh</button>
+		</div>
+	</div>
+	</fieldset>
+	<fieldset class="border p-2 mt-2"><legend class="w-auto h5 mb-0">Set Text editor (user:arowatt)</legend>
+		<button class="btn btn-secondary" id="setEditorAtto">Atto</button>
+		<button class="btn btn-secondary" id="setEditorTinyMCE">TinyMCE</button>
+		<button class="btn btn-secondary" id="setEditorPlain">Plain text area</button>
+	</fieldset>
+	</div>
+</div>
+</body>
+</html>
