@@ -16,16 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {  /* Helper links on t
 		c = $(this).find(".moreinfo");
 
 		var ql = '<div class="quicklinks">';
-		ql += `<a target='_blank' href="/course/edit.php?id=${cid}">Edit</a>`;
-		ql += `<a target="_blank" href="/user/index.php?id=${cid}">Enrol</a>`;
-		ql += `<a target="_blank" href="/enrol/instances.php?id=${cid}">Methods</a>`;
-		ql += `<a target="_blank" href="/mod/assign/index.php?id=${cid}">Assignments</a>`;
-		ql += `<a target="_blank" href="/mod/quiz/index.php?id=${cid}">Quizzes</a>`;
-		ql += `<a target="_blank" href="/grade/edit/tree/index.php?id=${cid}">Gradebook</a>`;
+		ql += `<span><a target='_blank' href="/course/edit.php?id=${cid}">Edit</a></span>`;
+		ql += `<span><a target="_blank" href="/user/index.php?id=${cid}">Enrol</a></span>`;
+		ql += `<span><a target="_blank" href="/enrol/instances.php?id=${cid}">Methods</a></span>`;
+		ql += `<span><a target="_blank" href="/mod/assign/index.php?id=${cid}">Assignments</a></span>`;
+		ql += `<span><a target="_blank" href="/mod/quiz/index.php?id=${cid}">Quizzes</a></span>`;
+		ql += `<span><a target="_blank" href="/grade/edit/tree/index.php?id=${cid}">Gradebook</a></span>`;
 
-		ql += `&nbsp;<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${sn}')" title="Copy shortname to clipboard">${sn}</button>`;
-		ql += `&nbsp;<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${cid}')" title="Copy Course ID clipboard">${cid}</button>`;
-		ql += `&nbsp;<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('https://stream.massey.ac.nz/course/view.php?id=${cid}')" title="Copy course URL clipboard">URL</button>`;
+		ql += `<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${sn}')" title="Copy shortname to clipboard">${sn}</button>`;
+		ql += `<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${cid}')" title="Copy Course ID clipboard">${cid}</button>`;
+		ql += `<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('https://stream.massey.ac.nz/course/view.php?id=${cid}')" title="Copy course URL clipboard">URL</button>`;
 		ql += `</div>`;
 
 		c.append(ql);

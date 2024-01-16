@@ -52,8 +52,11 @@ body.jsenabled {color:red;}
             display: flex;
             flex-wrap: wrap;
             gap: 0 0.2em;
+            margin-top: 0.5em;
 
-            a:not(:last-of-type):after { content: " \2022"; }
+            span:not(:last-of-type)::after { content: " \2022"; }
+
+            button {margin-left: 0.2em;}
 
             &::before {
                 content:'Quick links: ';
