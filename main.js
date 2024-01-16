@@ -119,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 	*/
 	
+	/*
 	function setTheme(theme) {
 		console.log("setEditor:" + theme);
 		console.log(`https://${$("#hostname").val()}/webservice/rest/server.php?wstoken=xxx&wsfunction=core_course_update_courses&courses[0][id]=${course_id}&courses[0][forcetheme]=${theme}&moodlewsrestformat=json`);
@@ -133,15 +134,18 @@ document.addEventListener("DOMContentLoaded", function() {
 			}});
 	}
 	
+	
 	document.getElementById("setTheme").addEventListener("click",function() {
-		/* To do: rewrite eg setEditor below */
+		// To do: rewrite eg setEditor below
 		setTheme($("#theme").val());
 				
 		//chrome.tabs.executeScript(tab.id,{code:`var cids = document.getElementsByTagName("body")[0].getAttribute("class").match(/course-(\\d+)/);if(cids&&cids[1]!="1") {cid=cids[1];var theme="${$("#theme").val()}";console.log("Setting theme for course " + cid + " to " + theme);$.when( $.ajax( "/webservice/rest/server.php?wstoken=6197db55774e47689265e3f33b11e408&wsfunction=core_course_update_courses&courses[0][id]=" + cid + "&courses[0][forcetheme]=" + theme + "&moodlewsrestformat=json" ) ).then(function( data, textStatus, jqXHR ) {  if(data.warnings && data.warnings.length==0) {console.log('Success');window.location.reload();} else {console.log(data);alert(data);}});}`});
 		
 		//window.close();
 	});
+	*/
 	
+	/*
 	function setEditor(editor) {
 		console.log("setEditor:" + editor);
 		$.when( $.ajax( `https://${$("#hostname").val()}/webservice/rest/server.php?wstoken=xxx&wsfunction=core_user_set_user_preferences&preferences[0][userid]=11&moodlewsrestformat=json&preferences[0][name]=htmleditor&preferences[0][value]=${editor}` ) ).then(function( data, textStatus, jqXHR ) {
@@ -155,9 +159,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	document.getElementById("setEditorAtto").addEventListener("click",() => setEditor('atto'));
 	document.getElementById("setEditorTinyMCE").addEventListener("click",() => setEditor('tinymce'));
 	document.getElementById("setEditorPlain").addEventListener("click",() => setEditor('textarea'));
+	*/
 	
-	
-
 	chrome.runtime.onMessage.addListener(function (message) {
 		console.log("Received message in main.js:" + message.details);
 		

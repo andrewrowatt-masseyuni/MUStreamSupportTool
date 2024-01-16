@@ -23,5 +23,5 @@
    "host_permissions": [
     "https://*.massey.ac.nz/*"
   ],
-   "version": "3.4.81"
+   "version": "4.0.82"
 }
