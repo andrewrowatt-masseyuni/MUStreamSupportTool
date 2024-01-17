@@ -23,7 +23,9 @@ body.jsenabled {color:red;}
                 display: none;
             }
         }
-        .font-weight-bold { font-weight: 400!important;}
+        .font-weight-bold {
+            font-weight: 400!important;
+        }
 
         .teachers {
             display: flex;
