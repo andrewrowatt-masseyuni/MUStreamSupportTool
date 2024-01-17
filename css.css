@@ -37,8 +37,11 @@ body.jsenabled {color:red;}
             .font-weight-bold {
                 display:none;
             }
+
+            li:not(:last-child):after {
+                content: " \2022";
+            }
             
-            li:not(:last-child):after { content: " \2022"; }
             &:hover a {text-decoration: underline;}
 
             &::before {
