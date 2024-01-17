@@ -4,7 +4,9 @@ Note: Often need to increase specificity e.g. jsenabled
 body.jsenabled {color:red;}
 */
 
-#page-report-log-index section#region-main { max-width: none; }
+#page-report-log-index section#region-main {
+    max-width: none;
+}
 
 /* Highligh current chapter */
 #page-mod-book-view .book_toc strong::after{
