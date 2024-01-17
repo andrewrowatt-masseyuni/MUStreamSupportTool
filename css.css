@@ -34,7 +34,10 @@ body.jsenabled {color:red;}
             width:100%;
             margin-bottom: 0.5em;
 
-            .font-weight-bold {display:none;}
+            .font-weight-bold {
+                display:none;
+            }
+            
             li:not(:last-child):after { content: " \2022"; }
             &:hover a {text-decoration: underline;}
 
