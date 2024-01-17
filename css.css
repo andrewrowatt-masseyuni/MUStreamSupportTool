@@ -12,7 +12,9 @@ body.jsenabled {color:red;}
 }
 
 /* Always show search */
-#toc-search {display: block; }
+#toc-search {
+    display: block;
+}
 
 /* Category and search */
 #page-course-index-category, #page-course-search {
