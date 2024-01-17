@@ -41,8 +41,10 @@ body.jsenabled {color:red;}
             li:not(:last-child):after {
                 content: " \2022";
             }
-            
-            &:hover a {text-decoration: underline;}
+
+            &:hover a {
+                text-decoration: underline;
+            }
 
             &::before {
                 content:'Teachers: ';
