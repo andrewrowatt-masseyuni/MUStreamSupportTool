@@ -117,9 +117,6 @@ body.jsenabled {color:red;}
 /* /admin/usrs */
 #fgroup_id_username_grp, #fgroup_id_email_grp { display: flex;}
 
-section.block_navigation.block { max-height: 15em; overflow: scroll; }
-
-
 /* Helper for nav bar*/
 #page-header .breadcrumb-nav .breadcrumb-item div {
 	display: inline;
