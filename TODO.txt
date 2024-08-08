@@ -1,3 +1,3 @@
 To-do:
 
-Copy formated link?
+Copy formated link like "Rich URL"
