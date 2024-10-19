@@ -70,22 +70,10 @@ document.addEventListener('DOMContentLoaded', function() {  /* Helper links on t
 	var cids = document.getElementsByTagName("body")[0].getAttribute("class").match(/course-(\d+)/)
 	if(cids) {
 		cid = cids[1];
-		course_menu = $("#settingsnav li.type_course > ul > li");
-		
 		/* Add in reverse priority order */
-		$(course_menu[0]).prepend('<li class="type_setting depth_2 item_with_icon" tabindex="-1" aria-labelledby="label_2_5" style="font-size:smaller;"><p class="tree_item hasicon tree_item leaf" role="treeitem" tabindex="-1" aria-selected="false"><a href="/enrol/instances.php?id=' + cid + '" tabindex="-1"><i class="icon fa fa-cog fa-fw navicon" aria-hidden="true" tabindex="-1"></i>Enrolment methods</a></p></li>');
-		
-		$(course_menu[0]).prepend('<li class="type_setting depth_2 item_with_icon" tabindex="-1" aria-labelledby="label_2_5" style="font-size:smaller;"><p class="tree_item hasicon tree_item leaf" role="treeitem" tabindex="-1" aria-selected="false"><a href="/user/index.php?id=' + cid + '" tabindex="-1"><i class="icon fa fa-cog fa-fw navicon" aria-hidden="true" tabindex="-1"></i>Enrolled users</a></p></li>');
-		
-		/*
-		$(course_menu[0]).prepend('<li class="type_setting depth_2 item_with_icon" tabindex="-1" aria-labelledby="label_2_5" style="font-size:smaller;"><p class="tree_item hasicon tree_item leaf" role="treeitem" tabindex="-1" aria-selected="false"><a href="/grade/report/history/index.php?id=' + cid + '" tabindex="-1"><i class="icon fa fa-cog fa-fw navicon" aria-hidden="true" tabindex="-1"></i>Gradebook history</a></p></li>');
-		*/
-		
-		/*
-		$(course_menu[0]).prepend('<li class="type_setting depth_2 item_with_icon" tabindex="-1" aria-labelledby="label_2_5" style="font-size:smaller;"><p class="tree_item hasicon tree_item leaf" role="treeitem" tabindex="-1" aria-selected="false"><a href="/report/log/index.php?id=' + cid + '" tabindex="-1"><i class="icon fa fa-cog fa-fw navicon" aria-hidden="true" tabindex="-1"></i>Logs</a></p></li>');
-		*/
-		
-		$("#settingsnav li.type_course > ul > li").find(":contains(\"Outcomes\"), :contains(\"Reset\"), :contains(\"Badges\"), :contains(\"xCopy course\")").each(function() {
+		$("#settingsnav li.type_course > ul").prepend(`<p class="tree_item hasicon leaf tree_item_ajr"><a href="/report/log/index.php?id=${cid}" tabindex="-1"><i class="icon fa fa-area-chart fa-fw navicon" aria-hidden="true" tabindex="-1"></i>Logs</a></p>`).prepend(`<p class="tree_item hasicon leaf tree_item_ajr"><a href="/enrol/instances.php?id=${cid}" tabindex="-1"><i class="icon fa fa-user-plus fa-fw navicon" aria-hidden="true" tabindex="-1"></i>Enrolment methods</a></p>`).prepend(`<p class="tree_item hasicon leaf tree_item_ajr"><a href="/user/index.php?id=${cid}" tabindex="-1"><i class="icon fa fa-user-plus fa-fw navicon" aria-hidden="true" tabindex="-1"></i>Enrolled users</a></p>`);
+
+		$("#xsettingsnav li.type_course > ul > li").find(":contains(\"Outcomes\"), :contains(\"Reset\"), :contains(\"Badges\"), :contains(\"xCopy course\")").each(function() {
 			$(this).css("display","none");
 		});
 	}
@@ -94,8 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {  /* Helper links on t
 	$("#page-header .breadcrumb-nav .breadcrumb-item a").each(function() {
 		n = $(this);
 		c = this.outerHTML;
-		console.log(n.text());
-		this.outerHTML = "<div>" + c + "<span><button class=\"copy-to-clipboard-ajr\" onclick=\"navigator.clipboard.writeText('" +  n.attr("href") + "')\" title=\"Copy URL to clipboard\"><i class=\"fa fa-link\" aria-hidden=\"true\"></i></button>&nbsp;<button class=\"copy-to-clipboard-ajr\" onclick=\"navigator.clipboard.writeText('" +  n.text() + "')\" title=\"Copy text to clipboard\"><i class=\"fa fa-font\" aria-hidden=\"true\"></i></button></span></div>";
+		t = c.replaceAll('"','\\x22');
+		this.outerHTML = `<div>${c}<span><button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${n.attr("href")}')" title="Copy URL to clipboard"><i class="fa fa-link" aria-hidden="true"></i></button>&nbsp;<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${n.text()}')" title="Copy text to clipboard"><i class="fa fa-font" aria-hidden="true"></i></button>&nbsp;<button class="copy-to-clipboard-ajr" onclick=';navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob(["${t}"], { type: "text/html" }) })]);' title="Copy HTML link to clipboard"><i class="fa fa-file-text-o" aria-hidden="true"></i></button></span></div>`;
 	});
 	
 	

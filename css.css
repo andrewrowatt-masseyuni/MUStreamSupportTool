@@ -137,3 +137,15 @@ body.jsenabled {color:red;}
 /* Helper book editing*/
 a.book-edit-helper {opacity:0.2;}
 li:hover > a.book-edit-helper {opacity:1.0;}
+
+
+/* Course admin block */
+.type_course {
+    .tree_item_ajr {
+        font-size:smaller;
+
+        +.type_setting {
+            border-top: 1px solid #ccc;
+        }
+    }
+}
