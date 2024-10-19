@@ -1,0 +1,3 @@
+To-do:
+
+Copy formated link like "Rich URL"
