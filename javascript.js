@@ -29,13 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {  /* Helper links on t
 		ql += `</div>`;
 
 		c.append(ql);
-
-		/*
-
-		c.append("&nbsp;<button class=\"copy-to-clipboard-ajr\" onclick=\"navigator.clipboard.writeText('" + sn + "')\" title=\"Copy shortname to clipboard\">" + sn + "</button>");
-		c.append("&nbsp;<button class=\"copy-to-clipboard-ajr\" onclick=\"navigator.clipboard.writeText('" + cid + "')\" title=\"Copy Course ID clipboard\">" + cid + "</button>");
-		c.append("&nbsp;<button class=\"copy-to-clipboard-ajr\" onclick=\"navigator.clipboard.writeText('https://stream.massey.ac.nz/course/view.php?id=" + cid + "')\" title=\"Copy course URL clipboard\">URL</button>");
-		*/
     });
 	
 	/* Helper links on the assignment list page e.g.: https://stream.massey.ac.nz/mod/assign/index.php?id=3153 */
