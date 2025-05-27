@@ -135,4 +135,32 @@ document.addEventListener('DOMContentLoaded', function() {  /* Helper links on t
 		$("#id_submitbutton2").click();
 	}
 
+	/* https://stream.massey.ac.nz/course/modedit.php?update=5300384&ajr_action=course10a */
+	if(window.location.href.indexOf("ajr_action=course10a") != -1) {
+		const e = $("#id_page");
+		var v = e.val();
+		v = v.replaceAll('<h3><strong><img src="$IMS-CC-FILEBASE$/images/Icons%20-%20grayscale%20-%20small%20(40%20x%2040)/information_circle_icon_gray.png" alt="" /> Purpose</strong></h3>',
+			'<h3 class="hicon purpose">Purpose</h3>');
+		v = v.replaceAll('<h3><strong><img src="$IMS-CC-FILEBASE$/images/Icons%20-%20grayscale%20-%20small%20(40%20x%2040)/information_circle_icon_gray.png" alt="" /> Purpose </strong></h3>',
+			'<h3 class="hicon purpose">Purpose</h3>');
+                       
+		v = v.replaceAll('<h3><strong><img src="$IMS-CC-FILEBASE$/images/Icons%20-%20grayscale%20-%20small%20(40%20x%2040)/workshop_circle_icon_gray.png" alt="" /> Prompt</strong></h3>',
+			'<h3 class="hicon prompt">Prompt</h3>');
+		v = v.replaceAll('<h3><strong><img src="$IMS-CC-FILEBASE$/images/Icons%20-%20grayscale%20-%20small%20(40%20x%2040)/workshop_circle_icon_gray.png" alt="" /> Prompts</strong></h3>',
+			'<h3 class="hicon prompt">Prompts</h3>');
+
+		v = v.replaceAll('<h3><strong><img src="$IMS-CC-FILEBASE$/images/Icons%20-%20grayscale%20-%20small%20(40%20x%2040)/information_circle_icon_gray.png" alt="" /> Explanation</strong></h3>',
+			'<h3 class="hicon explanation">Explanation</h3>');
+		v = v.replaceAll('<h3><strong><img src="$IMS-CC-FILEBASE$/images/Icons%20-%20grayscale%20-%20small%20(40%20x%2040)/discussion_circle_icon_gray.png" alt="" /> Examples</strong></h3>',
+			'<h3 class="hicon examples">Examples</h3>');
+
+		v = v.replaceAll('<h3><strong><img src="$IMS-CC-FILEBASE$/images/Icons%20-%20grayscale%20-%20small%20(40%20x%2040)/special_consideration_circle_icon_gray.png" alt="" /> Acknowledge</strong></h3>',
+			'<h3 class="hicon acknowledge">Acknowledge</h3>');
+		
+
+		$("#id_page").val(v);
+
+		// $("#id_submitbutton2").click();
+	}
+
 }, false);
