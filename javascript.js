@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {  /* Helper links on t
 	console.log("AJR:Executing injected JS - javascript.js");
 	
 	// copyToClipboardAJR styles
-	$('head').append('<style type="text/css">button.copy-to-clipboard-ajr {background-color:#00000011;border:none;padding:0.4em;border-radius: 4px;font-size: 12px;line-height: 12px;} button.copy-to-clipboard-ajr::before {content: \'\\f0c5\';font-family:\'FontAwesome\';padding-right:4px}</style>');
+	$('head').append('<style type="text/css">button.copy-to-clipboard-ajr {background-color:#00000011;border:none;padding:0.4em;border-radius: 4px;font-size: 12px;line-height: 12px;} button.copy-to-clipboard-ajr::before {content: \'\\f0c5\';font-family:\'Font Awesome 6 Free\';padding-right:4px}</style>');
 	
 	// Custom reports copy
-	$('head').append('<style type="text/css">.copy-to-clipboard-ajr tbody td, .copy-to-clipboard-ajr tbody th {position: relative;} .copy-to-clipboard-ajr tbody td:hover::before, .copy-to-clipboard-ajr tbody th:hover::before {content: \'\\f0c5\';font-family:\'FontAwesome\';position:absolute;right:-8px;z-index:100;font-weight:normal;border-radius:12px;padding:2px 4px;font-size:12px;color:white;background-color:#00000099;}</style>');
+	$('head').append('<style type="text/css">.copy-to-clipboard-ajr tbody td, .copy-to-clipboard-ajr tbody th {position: relative;} .copy-to-clipboard-ajr tbody td:hover::before, .copy-to-clipboard-ajr tbody th:hover::before {content: \'\\f0c5\';font-family:\'Font Awesome 6 Free\';position:absolute;right:-8px;z-index:100;font-weight:normal;border-radius:12px;padding:2px 4px;font-size:12px;color:white;background-color:#00000099;}</style>');
 	$("#page-admin-report-customsql-view .generaltable").addClass("copy-to-clipboard-ajr").click((e) => {if(e.target.tagName != "A") {navigator.clipboard.writeText(e.target.innerText.trim());}});
 	
 	// Search helper links
