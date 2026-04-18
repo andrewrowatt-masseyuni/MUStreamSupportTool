@@ -2,13 +2,13 @@
 	width: 500px;
 	height: 580px;
 }
-#cssEditor, #cssEditor1, #cssEditor2, #cssEditor3,#tools { 
+.cssEditor, #tools {
 	position: absolute;
     width: 500px;
     height: 550px;
 }
 
-#cssEditor1, #cssEditor2, #cssEditor3, #tools {
+#tools {
 	display: none;
 }
 ul.tabs {
