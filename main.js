@@ -25,21 +25,32 @@ function buildProjectUI() {
 		tabEl.textContent = "CSS (Project " + i + ")";
 		tabsList.insertBefore(tabEl, toolsTab);
 
-		var editorDiv = document.createElement("div");
-		editorDiv.id = "cssEditor" + i;
-		editorDiv.className = "tabContent cssEditor";
-		if (i !== 1) editorDiv.style.display = "none";
-		container.insertBefore(editorDiv, toolsContent);
+		var wrapperDiv = document.createElement("div");
+		wrapperDiv.id = "cssEditor" + i;
+		wrapperDiv.className = "tabContent cssEditor";
+		if (i !== 1) wrapperDiv.style.display = "none";
+
+		var header = document.createElement("div");
+		header.className = "cssEditorHeader";
+		header.innerHTML =
+			'<div class="form-check form-check-inline mb-0">' +
+				'<input id="project' + i + 'enabled" type="checkbox" checked="checked" class="form-check-input">' +
+				'<label for="project' + i + 'enabled" class="form-check-label">Inject</label>' +
+			'</div>';
+
+		var aceDiv = document.createElement("div");
+		aceDiv.id = "cssEditorAce" + i;
+		aceDiv.className = "cssEditorAce";
+
+		wrapperDiv.appendChild(header);
+		wrapperDiv.appendChild(aceDiv);
+		container.insertBefore(wrapperDiv, toolsContent);
 
 		var row = document.createElement("div");
 		row.className = "form-group form-row align-items-center";
 		row.innerHTML =
 			'<label for="project' + i + 'name" class="col-3 col-form-label">Project ' + i + '</label>' +
-			'<input id="project' + i + 'name" type="text" value="" class="form-control col"/>' +
-			'<div class="col-3"><div class="form-check form-check-inline">' +
-				'<input id="project' + i + 'enabled" type="checkbox" checked="checked" class="form-check-input">' +
-				'<label for="project' + i + 'enabled" class="form-check-label col-form-label">Inject</label>' +
-			'</div></div>';
+			'<input id="project' + i + 'name" type="text" value="" class="form-control col"/>';
 		toolsProjects.appendChild(row);
 	}
 }
@@ -73,13 +84,20 @@ function bindListeners() {
 		injectCss();
 		updateProjectTabNames();
 	});
+
+	document.getElementById("container").addEventListener("change", function(e) {
+		if (e.target.matches(".cssEditorHeader input")) {
+			saveEditorContent();
+			injectCss();
+		}
+	});
 }
 document.addEventListener("DOMContentLoaded", function() {
 	buildProjectUI();
 
 	for (var i = 1; i <= PROJECT_COUNT; i++) {
-		var editor = ace.edit("cssEditor" + i);
-		editor.setTheme("ace/theme/monokai");
+		var editor = ace.edit("cssEditorAce" + i);
+		editor.setTheme("ace/theme/chrome");
 		editor.getSession().setMode("ace/mode/css");
 		projects.push({
 			index: i,
