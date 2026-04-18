@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {  /* Helper links on the course search page */
 	console.log("AJR:Executing injected JS - javascript.js");
+
+	document.body.classList.add("stream-support-tool-injected");
 	
 	// copyToClipboardAJR styles
 	$('head').append('<style type="text/css">button.copy-to-clipboard-ajr {background-color:#00000011;border:none;padding:0.4em;border-radius: 4px;font-size: 12px;line-height: 12px;} button.copy-to-clipboard-ajr::before {content: \'\\f0c5\';font-family:\'Font Awesome 6 Free\';padding-right:4px}</style>');
@@ -76,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {  /* Helper links on t
 		n = $(this);
 		c = this.outerHTML;
 		t = c.replaceAll('"','\\x22');
-		this.outerHTML = `<div>${c}<span><button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${n.attr("href")}')" title="Copy URL to clipboard"><i class="fa fa-link" aria-hidden="true"></i></button>&nbsp;<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${n.text()}')" title="Copy text to clipboard"><i class="fa fa-font" aria-hidden="true"></i></button>&nbsp;<button class="copy-to-clipboard-ajr" onclick=';navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob(["${t}"], { type: "text/html" }) })]);' title="Copy HTML link to clipboard"><i class="fa fa-file-text-o" aria-hidden="true"></i></button></span></div>`;
+		this.outerHTML = `<div class="sst-nav">${c}<span><button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${n.attr("href")}')" title="Copy URL to clipboard"><i class="fa fa-link" aria-hidden="true"></i></button>&nbsp;<button class="copy-to-clipboard-ajr" onclick="navigator.clipboard.writeText('${n.text()}')" title="Copy text to clipboard"><i class="fa fa-font" aria-hidden="true"></i></button>&nbsp;<button class="copy-to-clipboard-ajr" onclick=';navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob(["${t}"], { type: "text/html" }) })]);' title="Copy HTML link to clipboard"><i class="fa fa-file-text-o" aria-hidden="true"></i></button></span></div>`;
 	});
 	
 	
@@ -101,6 +103,30 @@ document.addEventListener('DOMContentLoaded', function() {  /* Helper links on t
 		}
 	}
 	*/
+
+	/* Moodle 4.5 upgrade - add links for old mod_mediasite videos */
+	/* https://masseyuni-my.sharepoint.com/:x:/r/personal/arowatt_massey_ac_nz/Documents/NC%20Special%20Projects/Moodle%204.5%20upgrade%20PL160233/mod_mediasite/mod_mediasite%20Tools.xlsx?d=w964ac24f28cc464c9aaa07ed29587c56&csf=1&web=1&e=Jv1OpX */
+	/* https://stream.massey.ac.nz/course/modedit.php?update=4786147 */
+	if(window.location.href.indexOf("ajr=aml") != -1) {
+		const p = new URLSearchParams(window.location.search);
+		const resourceid = p.get("rid");
+		const name = p.get("n");
+		const dataid= p.get("did");
+		$("#id_introeditor").val(`<p><a href="https://webcast.massey.ac.nz/Mediasite/Play/${resourceid}" data-mod-mediasite-id="${dataid}">Link to Mediasite video: ${name}</a></p>`);
+		$("#id_submitbutton2").click();
+	}
+
+	/* {global_invigilatedexamsa} */
+	if(window.location.href.indexOf("ajr=iea") != -1) {
+		$("#id_introeditor").val(`<p>{global_invigilatedexamsa}</p>`);
+		$("#id_submitbutton2").click();
+	}
+
+	/* {global_invigilatedexamsb} */
+	if(window.location.href.indexOf("ajr=ieb") != -1) {
+		$("#id_introeditor").val(`<p>{global_invigilatedexamsb}</p>`);
+		$("#id_submitbutton2").click();
+	}
 	
 	/* Add {global_covidinternala} label */
 	$("#page-mod-label-mod #id_submitbutton2").each(function () {

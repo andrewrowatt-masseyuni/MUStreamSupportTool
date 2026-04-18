@@ -127,11 +127,7 @@ body.jsenabled {color:red;}
 }
 
 #page-header .breadcrumb-nav .breadcrumb-item div:hover span {
-	display: inline;
-}
-
-#page-header .breadcrumb-nav .breadcrumb-item div span button {
-	background-color: #eee;
+	display: inline-block;
 }
 
 /* Helper book editing*/
@@ -146,6 +142,25 @@ li:hover > a.book-edit-helper {opacity:1.0;}
 
         +.type_setting {
             border-top: 1px solid #ccc;
+        }
+    }
+}
+
+
+.stream-support-tool-injected {
+    .sst-nav {
+        --background-color: rgb(255 255 255 / 0.7);
+
+        span {
+            position: absolute;
+            border: 4px solid var(--background-color);
+            background-color: var(--background-color);
+            border-radius: 4px;
+            transform: translateY(-4px);
+
+            button {
+            	background-color: #eee;
+            }
         }
     }
 }

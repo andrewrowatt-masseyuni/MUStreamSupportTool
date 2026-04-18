@@ -1,0 +1,63 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+**MUStreamSupportTool** is a Chrome extension (Manifest V3) that injects helper links, buttons, visual indicators, and custom CSS into Massey University's Moodle LMS ("Stream") pages. It targets `https://*.massey.ac.nz/*` and `https://*.owrt.org/*`.
+
+## Development Workflow
+
+There is no build system. This is a raw Chrome extension — all files are loaded directly by the browser.
+
+**To load the extension:**
+1. Open `chrome://extensions/`
+2. Enable "Developer mode"
+3. Click "Load unpacked" and select the project directory
+
+**After making changes:** Click the refresh icon on the extension card in `chrome://extensions/`, then reload the target Moodle page.
+
+**Testing is manual** — visit the relevant Moodle page type after reloading the extension. There is no test framework or linting setup.
+
+## Architecture
+
+The extension has four layers that work together:
+
+### 1. Bootstrap & Host Routing (`manifest.json`, `background.js`)
+`background.js` is a service worker that creates context menu items letting users open the current page on a different Stream host (prestream, stream, stream-dev, recovery-stream). It replaces the hostname in the current tab URL and opens a new tab.
+
+### 2. Content Script Pipeline (`content.js`, `common.js`)
+Runs at `document_start` on every matching page. Reads per-URL config from `chrome.storage.local` via `getInjectDataFromStorage()`, concatenates CSS from enabled projects, and injects it into the page as `<style id="sgqInjectCss">`.
+
+### 3. Page Enhancement (`javascript.js`)
+The main workhorse. Runs on DOMContentLoaded with jQuery. Enhances specific Moodle page types:
+- **Course search/management pages** — adds "Quick Links" panels with direct admin links and copy-to-clipboard buttons for course shortname, ID, and URL
+- **Assignment/quiz list pages** — injects "Settings" links
+- **Course admin menus** — prepends "Enrolled users", "Enrolment methods", "Logs" and hides unwanted items (Outcomes, Reset, Badges, Copy course)
+- **Breadcrumbs** — adds copy URL/text/HTML buttons
+- **Book editing** — adds gear icons to TOC entries
+- **Special `ajr` query parameters** — trigger one-off automation actions (inject video links, exam labels, COVID labels, auto-reset forms, rename LTI tools, replace image icons with CSS classes)
+
+### 4. Popup UI (`main.html`, `main.js`, `main.css`)
+Displayed when clicking the extension icon. Provides:
+- Four per-project ACE (code editor) tabs for writing custom CSS, with enable/disable toggles
+- A Tools tab showing live course details (course ID, theme, hostname) read from the active page via `chrome.scripting.executeScript`
+- Changes auto-save to `chrome.storage.local` and auto-inject into the current page
+
+## Storage Schema
+
+`chrome.storage.local` is keyed by hostname. Each hostname stores:
+- `cssInjection`, `cssInjection1`, `cssInjection2`, `cssInjection3` — CSS text per project
+- `project1name`…`project4name` — display names
+- `project1enabled`…`project4enabled` — booleans
+
+## Key Dependencies (all vendored, no npm)
+
+- `jquery-3.5.1.min.js` — DOM manipulation in `javascript.js`
+- `bootstrap/` — Bootstrap 5 for popup UI styling
+- `ace/` — ACE editor for in-popup CSS editing (Monokai theme)
+- Font Awesome 6 Free — icons injected via dynamic `<link>` in `javascript.js`
+
+## Version
+
+Current version is in `manifest.json` (`version` field). Increment this on meaningful changes.
